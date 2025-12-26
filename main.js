@@ -27,6 +27,63 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.parallax-content, .section-decor').forEach(el => observer.observe(el));
 
+// Music Player & Hero Logic
+const music = document.getElementById('bg-music');
+const toggleBtn = document.getElementById('music-toggle');
+const volumeSlider = document.getElementById('volume-control');
+const revealBtn = document.getElementById('hero-reveal-btn');
+const hero = document.getElementById('hero');
+let isPlaying = false;
+
+// Set initial volume
+if (music && volumeSlider) {
+  music.volume = volumeSlider.value;
+}
+
+function playMusic() {
+  music.play().then(() => {
+    if (toggleBtn) {
+      toggleBtn.classList.add('playing');
+      toggleBtn.innerHTML = '🎼';
+    }
+    isPlaying = true;
+  }).catch(e => console.log("Audio play blocked by browser:", e));
+}
+
+function toggleMusic() {
+  if (isPlaying) {
+    music.pause();
+    toggleBtn.classList.remove('playing');
+    toggleBtn.innerHTML = '🎵';
+    isPlaying = false;
+  } else {
+    playMusic();
+  }
+}
+
+if (toggleBtn) toggleBtn.addEventListener('click', toggleMusic);
+
+if (volumeSlider) {
+  volumeSlider.addEventListener('input', (e) => {
+    if (music) music.volume = e.target.value;
+  });
+}
+
+// Hero Reveal Interaction
+if (revealBtn && hero) {
+  revealBtn.addEventListener('click', () => {
+    // 1. Play Music (User Interaction)
+    playMusic();
+
+    // 2. Trigger Animations
+    hero.classList.add('animate-active');
+    revealBtn.classList.add('hidden');
+
+    // 3. Unlock Scroll
+    document.body.classList.remove('no-scroll');
+  });
+}
+
 // Form Handling
 const form = document.getElementById('rsvp-form');
 const successMessage = document.getElementById('success-message');
