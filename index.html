@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RSVP for the Wedding of Alex & Morgan" />
+  <title>Zafri & Natasha | Save the Date</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+
+
+  <nav class="navbar">
+    <div class="logo">Z & N</div>
+    <div class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#details">The Day</a>
+      <a href="#rsvp">RSVP</a>
+    </div>
+  </nav>
+
+  <!-- Section 1: Hero (Floral Animation) -->
+  <section id="hero" class="parallax-section floral-hero-bg">
+    <div class="floral-container">
+      <img src="/floral_splash.png" alt="Floral Wreath" class="hero-wreath" />
+      <div class="hero-text-overlay">
+        <p class="subtitle animate-text">We are getting married</p>
+        <h1 class="animate-text delay-200">Zafri & Natasha</h1>
+        <p class="date animate-text delay-400">October 24th, 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Intro/Story (Content) -->
+  <section class="content-section">
+    <h2 class="section-title">Save the Date</h2>
+    <p style="max-width: 600px; margin: 0 auto; color: #7F8C8D;">
+      We invite you to share in our joy as we exchange vows and begin our new life together.
+      Join us for an evening of love, laughter, and celebration.
+    </p>
+  </section>
+
+  <!-- Section 3: Venue/Details (Parallax) -->
+  <section id="venue-img" class="parallax-section">
+    <div class="parallax-overlay"></div>
+    <div class="parallax-content visible">
+      <h2 style="font-size: 3rem;">The Celebration</h2>
+    </div>
+  </section>
+
+  <!-- Section 4: Details Grid (Content) -->
+  <section id="details" class="content-section alt-bg relative">
+    <div class="details-grid">
+      <div class="detail-item">
+        <h3>Ceremony</h3>
+        <p>4:00 PM</p>
+        <p>The Grand Garden</p>
+        <p>123 Floral Ave</p>
+      </div>
+      <div class="detail-item">
+        <h3>Reception</h3>
+        <p>6:00 PM</p>
+        <p>Crystal Ballroom</p>
+        <p>Dinner to follow</p>
+      </div>
+      <div class="detail-item">
+        <h3>Attire</h3>
+        <p>Black Tie Optional</p>
+        <p>Dusty Blue & Silver</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: RSVP (Content with Floral) -->
+  <section id="rsvp" class="content-section relative">
+    <img src="/floral_splash.png" class="section-decor top-left reveal-on-scroll" alt="Decor" />
+    <h2 class="section-title">RSVP</h2>
+    <div class="rsvp-container">
+      <form id="rsvp-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required placeholder="Guest Name" />
+        </div>
+
+        <div class="form-group">
+          <label for="guests">Guests</label>
+          <select id="guests" name="guests">
+            <option value="1">1 Guest</option>
+            <option value="2">2 Guests</option>
+            <option value="3">3 Guests</option>
+          </select>
+        </div>
+
+        <button type="submit" class="submit-btn" id="submit-btn">Will Attend</button>
+      </form>
+
+      <div id="success-message" class="hidden" style="margin-top: 2rem; color: var(--text-main);">
+        <h3>Thank you!</h3>
+        <p>We look forward to celebrating with you.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Zafri & Natasha | Rose City</p>
+  </footer>
+  <script type="module" src="./main.js"></script>
+</body>
+
+</html>

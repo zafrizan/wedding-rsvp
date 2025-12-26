@@ -1,0 +1,503 @@
+:root {
+  --bg-white: #ffffff;
+  --bg-blue-light: #F0F4F8;
+  /* Alice Blue */
+  --text-main: #2C3E50;
+  /* Navy */
+  --text-muted: #7F8C8D;
+  /* Slate */
+  --primary-color: #34495E;
+  /* Darker Navy for accents */
+  --accent-blue: #5DADE2;
+  /* Soft Blue for highlights */
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--text-main);
+  line-height: 1.8;
+  overflow-x: hidden;
+  background-color: var(--bg-white);
+}
+
+/* Typography */
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+p {
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.3s ease;
+  /* Removed mix-blend-mode for stability */
+  color: var(--text-main);
+  /* Always visible on light floral bg */
+}
+
+.navbar.scrolled {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(5px);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  color: var(--text-main);
+}
+
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+}
+
+.nav-links a {
+  color: inherit;
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Parallax Sections */
+.parallax-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  color: white;
+}
+
+.parallax-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(44, 62, 80, 0.3);
+  /* Navy tint */
+}
+
+.parallax-content {
+  position: relative;
+  z-index: 10;
+  max-width: 800px;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease-out;
+}
+
+.parallax-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Parallax Images */
+#hero {
+  background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0202128?q=80&w=3000&auto=format&fit=crop');
+}
+
+#venue-img {
+  background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=3000&auto=format&fit=crop');
+  height: 60vh;
+  /* Shorter parallax window */
+}
+
+/* Content Sections (White/Blue Backgrounds) */
+.content-section {
+  padding: 6rem 2rem;
+  background-color: var(--bg-white);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-section.alt-bg {
+  background-color: var(--bg-blue-light);
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--text-main);
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 1px;
+  background-color: var(--text-muted);
+}
+
+/* Detail Cards */
+.details-grid {
+  display: flex;
+  gap: 4rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.detail-item {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+}
+
+.detail-item h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.detail-item p {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+}
+
+/* RSVP Form */
+.rsvp-container {
+  background: white;
+  padding: 4rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+input[type="text"],
+select {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  background: #fdfdfd;
+  font-family: var(--font-body);
+  transition: all 0.3s;
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--accent-blue);
+  outline: none;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1.2rem;
+  background-color: var(--text-main);
+  color: white;
+  border: none;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+  background-color: var(--text-main);
+  color: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* Floral Hero & Decor */
+.floral-hero-bg {
+  background-color: var(--bg-blue-light);
+  background-image: none !important;
+  /* Override parallax image */
+  overflow: hidden;
+  color: var(--text-main);
+  /* FIX: Dark text for visibility */
+}
+
+.floral-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-wreath {
+  width: 600px;
+  max-width: 90vw;
+  height: auto;
+  opacity: 0;
+  transform: scale(0.9) rotate(-5deg);
+  animation: bloomHero 2s ease-out forwards;
+  mix-blend-mode: multiply;
+  /* FIX: Removes white background visually */
+}
+
+.hero-text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Animations for Text */
+.animate-text {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease-out forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.3s;
+}
+
+.delay-400 {
+  animation-delay: 0.6s;
+}
+
+/* Decor Elements */
+.relative {
+  position: relative;
+  overflow: hidden;
+}
+
+.section-decor {
+  position: absolute;
+  width: 300px;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+  /* Initial state handled by animation */
+}
+
+.section-decor.bottom-right {
+  bottom: -50px;
+  right: -50px;
+  width: 400px;
+}
+
+.section-decor.top-left {
+  top: -50px;
+  left: -50px;
+  width: 250px;
+}
+
+/* Triggered State */
+.section-decor.visible {
+  /* Apply specific bloom animations based on position to preserve intended layout */
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.section-decor.bottom-right.visible {
+  animation-name: bloomDecorRight;
+}
+
+.section-decor.top-left.visible {
+  animation-name: bloomDecorLeft;
+}
+
+/* Keyframes */
+@keyframes bloomHero {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Adapted Blooms for Decor (preserving their corners) */
+@keyframes bloomDecorRight {
+  0% {
+    opacity: 0;
+    transform: translate(50px, 50px) scale(0.8) rotate(20deg);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 0.15;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes bloomDecorLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-50px, -50px) scale(0.8) rotate(-20deg);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 0.15;
+    transform: translate(0, 0) scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Keyframes */
+@keyframes bloomHero {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotate(-10deg);
+    filter: blur(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+
+  /* Navbar Mobile Layout */
+  .navbar {
+    padding: 1rem 1.5rem;
+    /* Tighter padding */
+    background: rgba(255, 255, 255, 0.8);
+    /* Slight bg always on mobile for readability */
+    backdrop-filter: blur(8px);
+  }
+
+  .navbar .logo {
+    font-size: 1.2rem;
+  }
+
+  .nav-links a {
+    margin-left: 1rem;
+    font-size: 0.7rem;
+    /* Smaller links */
+  }
+
+  /* Structural Adjustments */
+  .content-section {
+    padding: 4rem 1.5rem;
+    /* Reduced from 6rem */
+  }
+
+  .hero-wreath {
+    width: 100vw;
+    /* Full width */
+    margin-top: -80px;
+    /* Pull up slightly */
+    opacity: 0.8;
+    /* Slight fade */
+  }
+
+  .hero-text-overlay h1 {
+    font-size: 2.5rem !important;
+    /* Even smaller to fit */
+    line-height: 1.2;
+  }
+
+  .hero-text-overlay .date {
+    font-size: 1rem !important;
+  }
+
+  .section-decor {
+    width: 180px !important;
+    opacity: 0.1 !important;
+  }
+
+  .parallax-section {
+    /* Enable parallax on mobile as requested (removed background-attachment: scroll) */
+    min-height: 60vh;
+    /* Allow smaller height on mobile if needed */
+  }
+
+  .details-grid {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  /* Make inputs bigger for touch */
+  input[type="text"],
+  select,
+  .submit-btn {
+    padding: 1.2rem;
+    font-size: 1rem;
+  }
+}
