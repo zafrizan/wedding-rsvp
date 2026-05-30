@@ -5,134 +5,303 @@
   <meta charset="UTF-8" />
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="RSVP for the Wedding of Alex & Morgan" />
-  <title>Zafri & Natasya | Save the Date</title>
+  <meta name="description" content="Undangan Majlis Perkahwinan Zafri & Natasya" />
+  <title>Zafri & Natasya | Wedding Invitation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@200;300;400&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body class="no-scroll">
 
-  <nav class="navbar">
-    <div class="logo">Z & N</div>
-    <div class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#details">The Day</a>
-      <a href="#rsvp">RSVP</a>
+  <canvas id="petal-canvas"></canvas>
+
+  <div id="envelope-overlay">
+    <div class="overlay-curtain curtain-left"></div>
+    <div class="overlay-curtain curtain-right"></div>
+    <div class="envelope-card-center">
+      <div class="mini-monogram">ZN</div>
+      <p class="envelope-subtitle">Undangan Majlis Perkahwinan</p>
+      <h2 class="envelope-title">Zafri & Natasya</h2>
+      <button id="hero-reveal-btn" class="reveal-cta">Buka Jemputan</button>
     </div>
-  </nav>
+  </div>
 
-  <!-- Section 1: Hero (Floral Animation) -->
-  <section id="hero" class="parallax-section floral-hero-bg">
-    <div class="floral-container">
-      <img src="/floral_splash.png" alt="Floral Wreath" class="hero-wreath" />
-      <div class="hero-text-overlay">
-        <p class="subtitle animate-text">We are getting married</p>
-        <h1 class="animate-text delay-200">Zafri & Natasya</h1>
-        <p class="date animate-text delay-400">October 24th, 2026</p>
-      </div>
-      <div class="scroll-indicator">
-        <span></span>
-      </div>
-      <button id="hero-reveal-btn" class="reveal-cta">Reveal Our Journey</button>
-    </div>
-  </section>
+  <div id="invitation-main-content" class="fade-out-content">
 
-  <!-- Section 2: Intro/Story (Content) -->
-  <section class="content-section">
-    <h2 class="section-title">Save the Date</h2>
-    <p style="max-width: 600px; margin: 0 auto; color: #7F8C8D;">
-      We invite you to share in our joy as we exchange vows and begin our new life together.
-      Join us for an evening of love, laughter, and celebration.
-    </p>
-  </section>
-
-  <!-- Section 3: Venue/Details (Parallax Video) -->
-  <section id="venue-img" class="parallax-section video-section">
-    <video autoplay muted loop playsinline class="video-background">
-      <source src="/venue_video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="parallax-overlay"></div>
-    <div class="parallax-content visible">
-      <h2 style="font-size: 3rem;">The Celebration</h2>
-    </div>
-  </section>
-
-  <!-- Section 4: Details Grid (Content) -->
-  <section id="details" class="content-section alt-bg relative">
-    <div class="details-grid">
-      <div class="detail-item">
-        <h3>Ceremony</h3>
-        <p>4:00 PM</p>
-        <p>The Grand Garden</p>
-        <p>123 Floral Ave</p>
+    <nav class="navbar">
+      <div class="logo">Z & N</div>
+      <div class="nav-links">
+        <a href="#hero">Utama</a>
+        <a href="#gallery">Galeri</a>
+        <a href="#details">Majlis</a>
+        <a href="#rsvp">RSVP</a>
       </div>
-      <div class="detail-item">
-        <h3>Reception</h3>
-        <p>6:00 PM</p>
-        <p>Crystal Ballroom</p>
-        <p>Dinner to follow</p>
-      </div>
-      <div class="detail-item">
-        <h3>Attire</h3>
-        <p>Black Tie Optional</p>
-        <p>Dusty Blue & Silver</p>
-      </div>
-    </div>
-  </section>
+    </nav>
 
-  <!-- Section 5: RSVP (Content with Floral) -->
-  <section id="rsvp" class="content-section relative">
-    <img src="/floral_splash.png" class="section-decor top-left reveal-on-scroll" alt="Decor" />
-    <h2 class="section-title">RSVP</h2>
-    <div class="rsvp-container">
-      <form id="rsvp-form">
-        <div class="form-group">
-          <label for="name">Full Name</label>
-          <input type="text" id="name" name="name" required placeholder="Guest Name" />
+    <section id="hero" class="parallax-section floral-hero-bg">
+      <div class="card-frame-container">
+        <div class="floral-accent-top">
+          <img src="./public/flower3.png" alt="Floral Header Ornament" />
         </div>
 
-        <div class="form-group">
-          <label for="guests">Guests</label>
-          <select id="guests" name="guests">
-            <option value="1">1 Guest</option>
-            <option value="2">2 Guests</option>
-            <option value="3">3 Guests</option>
-          </select>
+        <div class="hero-text-overlay">
+          <p class="subtitle animate-text">Undangan Majlis Perkahwinan</p>
+          <div class="monogram animate-text">ZN</div>
+          <h1 class="animate-text">Zafri & Natasya</h1>
+
+          <div class="floral-divider animate-text">
+            <img src="./public/flower1.png" alt="Rose Accent" />
+          </div>
+
+          <p class="hero-subtext animate-text delay-200">01 · 08 · 2026</p>
+          <p class="venue-text animate-text delay-200">Casa Cendana Event Hall, Johor Bahru</p>
         </div>
 
-        <div class="form-group">
-          <label for="wish">Wedding Wish</label>
-          <textarea id="wish" name="wish" placeholder="Your message for the happy couple..." rows="4"></textarea>
+        <div class="floral-accent-bottom">
+          <img src="./public/flower2.png" alt="Floral Footer Ornament" />
         </div>
 
-        <button type="submit" class="submit-btn" id="submit-btn">Will Attend</button>
-      </form>
-
-      <div id="success-message" class="hidden" style="margin-top: 2rem; color: var(--text-main);">
-        <h3>Thank you!</h3>
-        <p>We look forward to celebrating with you.</p>
+        <div class="scroll-indicator">
+          <span></span>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <p>&copy; 2026 Zafri & Natasya | Rose City</p>
-  </footer>
+    <section class="content-section card-style-bg">
+      <div class="card-frame-container no-min-height">
+        <div class="invitation-intro">
+          <p class="arabic-text">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
+          <p class="greeting-text">Assalamualaikum wbt & Salam Sejahtera</p>
 
-  <!-- Music Player -->
-  <audio id="bg-music" loop autoplay>
+          <div class="parents-names">
+            <h3>HJ MOHD ZAN BIN ATAN</h3>
+            <p>&</p>
+            <h3>HJH A'ISAH BINTI GONO</h3>
+          </div>
+
+          <p class="invitation-body-prose">
+            Dengan penuh kesyukuran, kami menjemput<br>
+            Dato' | Datin | Tuan | Puan | Encik | Cik
+          </p>
+
+          <p class="invitation-sub-prose">ke majlis perkahwinan putera kami yang dikasihi,</p>
+
+          <div class="couple-names-highlight">
+            <h2>MUHAMMAD ZAFRI BIN MOHD ZAN</h2>
+            <p>dengan pasangannya</p>
+            <h2>AMIRAH NATASYA BINTI JAMULAIL</h2>
+          </div>
+
+          <div class="floral-divider">
+            <img src="./public/flower1.png" alt="Rose Accent" />
+          </div>
+
+          <p class="date-row-hijri">
+            pada hari<br>
+            <strong>SABTU, 1 OGOS 2026</strong><br>
+            <span>17 Safar 1448H</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="content-section alt-bg">
+      <h2 class="section-title">Momen Indah</h2>
+      <p class="gallery-subtitle">Galeri Kenangan & Pre-Wedding</p>
+
+      <div class="gallery-wrapper">
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <div class="image-placeholder"><span>Gambar Placeholder 1<br><small>(Letakkan fail imej anda di
+                  sini)</small></span></div>
+          </div>
+          <div class="mySlides fade">
+            <div class="image-placeholder" style="background-color: #E6E2D8;"><span>Gambar Placeholder 2</span></div>
+          </div>
+          <div class="mySlides fade">
+            <div class="image-placeholder" style="background-color: #DDD9CE;"><span>Gambar Placeholder 3</span></div>
+          </div>
+
+          <a class="prev-slide" id="prevSlide">❮</a>
+          <a class="next-slide" id="nextSlide">❯</a>
+
+          <div class="slideshow-dots">
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+            <span class="dot" data-index="3"></span>
+          </div>
+        </div>
+
+        <div class="floral-divider">
+          <img src="./public/flower1.png" alt="Rose Accent" />
+        </div>
+
+        <div class="video-container">
+          <h3>Pre-Wedding Montage</h3>
+          <div class="video-wrapper">
+            <video controls width="100%" poster="https://placehold.co/600x400/FCFBF7/8C7B64?text=Klik+Mula+Video">
+              <source src="/prewedding.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section relative subtle-border-section">
+      <h3 class="mini-title">Menghitung Hari</h3>
+      <div class="countdown-container">
+        <div class="countdown-box"><span id="days">00</span>
+          <p>Hari</p>
+        </div>
+        <div class="countdown-box"><span id="hours">00</span>
+          <p>Jam</p>
+        </div>
+        <div class="countdown-box"><span id="minutes">00</span>
+          <p>Minit</p>
+        </div>
+        <div class="countdown-box"><span id="seconds">00</span>
+          <p>Saat</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="details" class="content-section card-style-bg">
+      <div class="card-frame-container no-min-height">
+        <h2 class="section-title">Lokasi Majlis</h2>
+
+        <div class="location-flex-layout">
+          <div class="address-details-block">
+            <h3>CASA CENDANA EVENT HALL</h3>
+            <p>PTB 21655, Jalan Tasek Utara,</p>
+            <p>Ulu Ayer Molek, 80100 Johor Bahru,</p>
+            <p>Johor Darul Ta'zim</p>
+
+            <div class="action-buttons">
+              <a href="https://maps.google.com" target="_blank" class="map-link-btn gmaps">Google Maps</a>
+              <a href="https://waze.com" target="_blank" class="map-link-btn waze">Waze</a>
+            </div>
+          </div>
+
+          <div class="map-iframe-wrapper">
+            <iframe
+              src="https://maps.google.com/maps?q=Casa%20Cendana%20Event%20Space%20Johor%20Bahru&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section alt-bg">
+      <h2 class="section-title">Atur Cara Majlis</h2>
+      <div class="timeline-box-layout">
+        <div class="timeline-row">
+          <span class="time-stamp">11:00 Pagi - 4:00 Petang</span>
+          <span class="event-title">Jamuan Makan</span>
+        </div>
+        <div class="timeline-row">
+          <span class="time-stamp">2:00 Petang</span>
+          <span class="event-title">Ketibaan Pengantin</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section card-style-bg">
+      <h2 class="section-title">Hubungi</h2>
+
+      <div class="floral-divider">
+        <img src="./flower1.png" alt="Rose Accent" />
+      </div>
+
+      <div class="family-contacts-container">
+        <div class="contact-row">
+          <span class="contact-name">Zakiah</span>
+          <div class="contact-links">
+            <a href="https://wa.me/601154090459" target="_blank" class="icon-link">WhatsApp</a>
+            <a href="tel:+601154090459" class="icon-link">Call</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-name">Zahidah</span>
+          <div class="contact-links">
+            <a href="https://wa.me/60133078039" target="_blank" class="icon-link">WhatsApp</a>
+            <a href="tel:+60133078039" class="icon-link">Call</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-name">Zakirah</span>
+          <div class="contact-links">
+            <a href="https://wa.me/60197371231" target="_blank" class="icon-link">WhatsApp</a>
+            <a href="tel:+60197371231" class="icon-link">Call</a>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-name">Syafiqah</span>
+          <div class="contact-links">
+            <a href="https://wa.me/60182180345" target="_blank" class="icon-link">WhatsApp</a>
+            <a href="tel:+60182180345" class="icon-link">Call</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp" class="content-section alt-bg relative">
+      <h2 class="section-title">RSVP Kehadiran</h2>
+
+      <div class="rsvp-floral-backdrop">
+        <img src="./flower3.png" alt="Decorative background texture" />
+      </div>
+
+      <div class="rsvp-container">
+        <form id="rsvp-form">
+          <div class="form-group">
+            <label for="name">Nama Penuh</label>
+            <input type="text" id="name" name="name" required placeholder="Sila masukkan nama anda" />
+          </div>
+          <div class="form-group">
+            <label for="guests">Bilangan Orang</label>
+            <select id="guests" name="guests">
+              <option value="1">1 Orang</option>
+              <option value="2">2 Orang</option>
+              <option value="3">3 Orang</option>
+              <option value="4">4 Orang</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="attend">Kehadiran</label>
+            <select id="attend" name="attend">
+              <option value="yes">Ya, Saya akan hadir</option>
+              <option value="no">Maaf, Tidak dapat hadir</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="wish">Ucapan / Doa</label>
+            <textarea id="wish" name="wish" placeholder="Tinggalkan ucapan & doa anda di sini..." rows="4"></textarea>
+          </div>
+          <button type="submit" class="submit-btn" id="submit-btn">Hantar Pengesahan</button>
+        </form>
+        <div id="success-message" class="hidden" style="margin-top: 2rem; color: var(--text-main);">
+          <h3>Terima Kasih!</h3>
+          <p>Maklum balas kehadiran anda telah berjaya dihantar.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2026 Zafri & Natasya | Save the Date</p>
+    </footer>
+  </div>
+
+  <audio id="bg-music" loop>
     <source src="/music.mp3" type="audio/mp3">
   </audio>
   <div class="music-controls">
-    <button id="music-toggle" class="music-btn" aria-label="Toggle Music">
-      🎵
-    </button>
+    <button id="music-toggle" class="music-btn" aria-label="Toggle Music">🎵</button>
     <div class="volume-slider-container">
       <input type="range" id="volume-control" min="0" max="1" step="0.1" value="0.5">
     </div>
