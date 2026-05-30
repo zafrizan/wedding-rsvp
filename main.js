@@ -205,5 +205,34 @@ function updateCountdown() {
   document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
   document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
 }
+
+// Form Handling
+const form = document.getElementById('rsvp-form');
+const successMessage = document.getElementById('success-message');
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyX4Q7UYKqY63jtxD5zwaI4RhlaR4QJUw3qS_jRYSaZyrN_TcZkL0J0cE5K0Q6dtROZ/exec';
+
+if (form) {
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submit-btn');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+
+    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
+      .then(response => {
+        // Google Apps Script returns opaque response usually, or redirects. 
+        // We assume success if fetch works.
+        console.log('Success!', response);
+        form.style.display = 'none';
+        successMessage.classList.remove('hidden');
+      })
+      .catch(error => {
+        console.error('Error!', error.message);
+        // Fallback or alert user
+        submitBtn.textContent = 'Error! Try again.';
+        submitBtn.disabled = false;
+      });
+  });
+}
 setInterval(updateCountdown, 1000);
 updateCountdown();
