@@ -206,10 +206,12 @@ function updateCountdown() {
   document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
 }
 
-// Form Handling
+// --- Form Handling ---
 const form = document.getElementById('rsvp-form');
 const successMessage = document.getElementById('success-message');
-const scriptURL = 'https://script.google.com/macros/s/AKfycbyX4Q7UYKqY63jtxD5zwaI4RhlaR4QJUw3qS_jRYSaZyrN_TcZkL0J0cE5K0Q6dtROZ/exec';
+
+// PASTE YOUR LATEST DEPLOYMENT URL HERE
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyS567eu9JeDVkN8v3UcCWhuWQWVv6rlBdmnKLlZh-dR6KQ91BYcPcYqNVmPCxsvm4i/exec';
 
 if (form) {
   form.addEventListener('submit', (e) => {
@@ -218,21 +220,85 @@ if (form) {
     submitBtn.disabled = true;
     submitBtn.textContent = 'Sending...';
 
-    fetch(scriptURL, { method: 'POST', body: new FormData(form) })
-      .then(response => {
-        // Google Apps Script returns opaque response usually, or redirects. 
-        // We assume success if fetch works.
-        console.log('Success!', response);
-        form.style.display = 'none';
-        successMessage.classList.remove('hidden');
-      })
-      .catch(error => {
-        console.error('Error!', error.message);
-        // Fallback or alert user
-        submitBtn.textContent = 'Error! Try again.';
-        submitBtn.disabled = false;
-      });
+    const formData = new FormData(form);
+    const searchParams = new URLSearchParams();
+
+    // Map fields explicitly to double-check formatting
+    for (const pair of formData) {
+      searchParams.append(pair[0], pair[1]);
+    }
+
+    fetch(scriptURL, { 
+      method: 'POST', 
+      body: searchParams,
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    })
+    .then(response => response.json()) // Parse response securely
+    .then(data => {
+      console.log('Success Response:', data);
+      form.style.display = 'none';
+      successMessage.classList.remove('hidden');
+      
+      if (typeof loadWishes === 'function') {
+        loadWishes(); // Instantly refresh comments window
+      }
+    })
+    .catch(error => {
+      console.error('Error submitting form:', error);
+      submitBtn.textContent = 'Error! Try again.';
+      submitBtn.disabled = false;
+    });
   });
 }
+
+// --- Fetch and Display Guest Wishes ---
+const wishesContainer = document.getElementById('wishes-container');
+
+function loadWishes() {
+  if (!wishesContainer) return;
+
+  // Use the exact same scriptURL you used for the form submission
+  fetch(scriptURL)
+    .then(response => response.json())
+    .then(response => {
+      if (response.result === 'success' && response.data.length > 0) {
+        wishesContainer.innerHTML = ''; // Clear loading text
+        
+        response.data.forEach(item => {
+          const wishCard = document.createElement('div');
+          wishCard.className = 'wish-card';
+          
+          wishCard.innerHTML = `
+            <p class="wish-text">“${escapeHtml(item.wish)}”</p>
+            <h4 class="wish-author">- ${escapeHtml(item.name)}</h4>
+          `;
+          
+          wishesContainer.appendChild(wishCard);
+        });
+      } else {
+        wishesContainer.innerHTML = '<p class="no-wishes">Tiada ucapan lagi buat masa ini.</p>';
+      }
+    })
+    .catch(error => {
+      console.error('Error fetching wishes:', error);
+      wishesContainer.innerHTML = '<p class="error-wishes">Gagal memuatkan ucapan.</p>';
+    });
+}
+
+// Simple security helper function to prevent text breaking your HTML layouts
+function escapeHtml(str) {
+  if (!str) return '';
+  return str.toString()
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Run immediately on page load
+document.addEventListener('DOMContentLoaded', loadWishes);
 setInterval(updateCountdown, 1000);
 updateCountdown();

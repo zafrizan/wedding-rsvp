@@ -769,3 +769,54 @@ footer { background: var(--bg-blue-light); color: var(--text-muted); padding: 3r
     right: -10px;
   }
 }
+
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 2rem auto 0 auto;
+  padding: 0 1rem;
+}
+
+.wish-card {
+  background: rgba(252, 251, 247, 0.6); /* Translucent cream backdrop matching your app */
+  border: 1px solid rgba(140, 123, 100, 0.15);
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.wish-card:hover {
+  transform: translateY(-3px);
+}
+
+.wish-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  color: #4a4238;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+
+.wish-author {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: #8C7B64;
+  text-transform: uppercase;
+}
+
+.loading-wishes, .no-wishes, .error-wishes {
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  color: #8C7B64;
+  grid-column: 1 / -1;
+  padding: 2rem;
+}

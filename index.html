@@ -119,10 +119,12 @@
             <div class="image-placeholder"> <img src="./public/wed-1.jpg" alt="Rose Accent" /></div>
           </div>
           <div class="mySlides fade">
-            <div class="image-placeholder" style="background-color: #E6E2D8;"><img src="./public/wed-2.jpg" alt="Rose Accent" /></div>
+            <div class="image-placeholder" style="background-color: #E6E2D8;"><img src="./public/wed-2.jpg"
+                alt="Rose Accent" /></div>
           </div>
           <div class="mySlides fade">
-            <div class="image-placeholder" style="background-color: #DDD9CE;"><img src="./public/wed-3.jpg" alt="Rose Accent" /></div>
+            <div class="image-placeholder" style="background-color: #DDD9CE;"><img src="./public/wed-3.jpg"
+                alt="Rose Accent" /></div>
           </div>
 
           <a class="prev-slide" id="prevSlide">❮</a>
@@ -137,16 +139,6 @@
 
         <div class="floral-divider">
           <img src="./public/flower1.png" alt="Rose Accent" />
-        </div>
-
-        <div class="video-container">
-          <h3>Pre-Wedding Montage</h3>
-          <div class="video-wrapper">
-            <video controls width="100%" poster="https://placehold.co/600x400/FCFBF7/8C7B64?text=Klik+Mula+Video">
-              <source src="/prewedding.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
         </div>
       </div>
     </section>
@@ -284,6 +276,19 @@
           </div>
           <button type="submit" class="submit-btn" id="submit-btn">Hantar Pengesahan</button>
         </form>
+
+        <section id="wishes-display" class="content-section card-style-bg">
+          <div class="card-frame-container no-min-height">
+            <h2 class="section-title">Ucapan & Doa Tetamu</h2>
+            <div class="floral-divider">
+              <img src="./public/flower1.png" alt="Rose Accent" />
+            </div>
+
+            <div id="wishes-container" class="wishes-grid">
+              <p class="loading-wishes">Memuatkan ucapan...</p>
+            </div>
+          </div>
+        </section>
         <div id="success-message" class="hidden" style="margin-top: 2rem; color: var(--text-main);">
           <h3>Terima Kasih!</h3>
           <p>Maklum balas kehadiran anda telah berjaya dihantar.</p>
