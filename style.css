@@ -771,52 +771,74 @@ footer { background: var(--bg-blue-light); color: var(--text-muted); padding: 3r
 }
 
 
+/* --- Wishes Section Container --- */
+#wishes-display {
+  padding: 2rem 0;
+}
+
+/* --- Scrollable Grid Layout --- */
 .wishes-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 2rem auto 0 auto;
-  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem; /* Tight spaces so items group nicely */
+  max-width: 500px; /* Aligns perfectly on mobile viewports */
+  margin: 1rem auto 0 auto;
+  padding: 0.5rem;
+  
+  /* Forces the container to stay compact and scrollable */
+  max-height: 320px; 
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch; 
 }
 
+/* Slim scrollbar design */
+.wishes-grid::-webkit-scrollbar {
+  width: 4px;
+}
+.wishes-grid::-webkit-scrollbar-thumb {
+  background: rgba(140, 123, 100, 0.25);
+  border-radius: 10px;
+}
+
+/* --- Compact individual Wish Cards --- */
 .wish-card {
-  background: rgba(252, 251, 247, 0.6); /* Translucent cream backdrop matching your app */
-  border: 1px solid rgba(140, 123, 100, 0.15);
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.wish-card:hover {
-  transform: translateY(-3px);
+  background: rgba(252, 251, 247, 0.8);
+  border: 1px solid rgba(140, 123, 100, 0.12);
+  padding: 0.6rem 1rem; /* Tiny padding to save screen estate */
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.01);
+  text-align: left;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .wish-text {
   font-family: 'Cormorant Garamond', serif;
   font-style: italic;
-  font-size: 1.15rem;
+  font-size: 0.95rem; /* Downscaled for perfect glanceability */
   color: #4a4238;
-  margin-bottom: 0.75rem;
-  line-height: 1.5;
+  margin-bottom: 0.15rem;
+  line-height: 1.3;
 }
 
 .wish-author {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
+  font-weight: 500;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
   color: #8C7B64;
   text-transform: uppercase;
 }
 
-.loading-wishes, .no-wishes, .error-wishes {
-  text-align: center;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.9rem;
-  color: #8C7B64;
-  grid-column: 1 / -1;
-  padding: 2rem;
+/* --- Reno 6 & Ultra-Narrow Mobile Tweaks --- */
+@media (max-width: 400px) {
+  #wishes-display .section-title {
+    font-size: 1.4rem; /* Keeps it on a clean line or two max */
+    margin-bottom: 0.25rem;
+  }
+  
+  .wishes-grid {
+    max-height: 280px; /* Perfect proportional height for a 362x824 display */
+    padding: 0.25rem 0.5rem;
+  }
 }

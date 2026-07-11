@@ -173,8 +173,12 @@
             <p>Johor Darul Ta'zim</p>
 
             <div class="action-buttons">
-              <a href="https://maps.google.com" target="_blank" class="map-link-btn gmaps">Google Maps</a>
-              <a href="https://waze.com" target="_blank" class="map-link-btn waze">Waze</a>
+              <!-- Google Maps URL targeting Casa Cendana Event Space Johor Bahru -->
+              <a href="https://www.google.com/maps/search/?api=1&query=Casa+Cendana+Event+Space+Johor+Bahru"
+                target="_blank" class="map-link-btn gmaps">Google Maps</a>
+              <!-- Waze URL targeting Casa Cendana Event Space Johor Bahru -->
+              <a href="https://waze.com/ul?q=Casa%20Cendana%20Event%20Space%20Johor%20Bahru&navigate=yes"
+                target="_blank" class="map-link-btn waze">Waze</a>
             </div>
           </div>
 
@@ -277,28 +281,37 @@
           <button type="submit" class="submit-btn" id="submit-btn">Hantar Pengesahan</button>
         </form>
 
-        <section id="wishes-display" class="content-section card-style-bg">
-          <div class="card-frame-container no-min-height">
-            <h2 class="section-title">Ucapan & Doa Tetamu</h2>
-            <div class="floral-divider">
-              <img src="./public/flower1.png" alt="Rose Accent" />
-            </div>
-
-            <div id="wishes-container" class="wishes-grid">
-              <p class="loading-wishes">Memuatkan ucapan...</p>
-            </div>
-          </div>
-        </section>
         <div id="success-message" class="hidden" style="margin-top: 2rem; color: var(--text-main);">
           <h3>Terima Kasih!</h3>
           <p>Maklum balas kehadiran anda telah berjaya dihantar.</p>
         </div>
+      </div> <!-- /rsvp-container -->
+    </section> <!-- /rsvp section safely closed here -->
+
+    <!-- MOVE THIS COMPLETELY OUTSIDE -->
+    <section id="wishes-display" class="content-section card-style-bg">
+      <div class="card-frame-container no-min-height">
+        <h2 class="section-title">Ucapan & Doa Tetamu</h2>
+        <div class="floral-divider">
+          <img src="./public/flower1.png" alt="Rose Accent" />
+        </div>
+
+        <div id="wishes-container" class="wishes-grid">
+          <!-- Your javascript will dynamically inject .wish-card items here -->
+          <p class="loading-wishes">Memuatkan ucapan...</p>
+        </div>
       </div>
     </section>
+    <div id="success-message" class="hidden" style="margin-top: 2rem; color: var(--text-main);">
+      <h3>Terima Kasih!</h3>
+      <p>Maklum balas kehadiran anda telah berjaya dihantar.</p>
+    </div>
+  </div>
+  </section>
 
-    <footer>
-      <p>© 2026 Zafri & Natasya | Save the Date</p>
-    </footer>
+  <footer>
+    <p>© 2026 Zafri & Natasya | Save the Date</p>
+  </footer>
   </div>
 
   <audio id="bg-music" loop>
