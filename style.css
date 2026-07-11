@@ -416,6 +416,9 @@ h1, h2, h3, h4 { font-family: var(--font-heading); font-weight: 400; text-transf
   margin: 0.3rem 0; 
   font-weight: 400; 
   letter-spacing: 2px; 
+  
+  /* The Fix: Forces the "1" to look standard instead of a mini lowercase "i" */
+  font-variant-numeric: lining-nums; 
 }
 
 /* --- Mobile Responsiveness and Screen Edge Protection --- */
